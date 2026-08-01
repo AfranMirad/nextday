@@ -1,0 +1,17 @@
+{
+  "habitId": "drugs",
+  "disclaimer": "Ciddi bağımlılık ve yoksunluk riski için mutlaka sağlık profesyoneline başvurun. Bu metinler genel destektir.",
+  "milestones": [
+    {"day": 1, "title": "Gün 1 — Güvenli başlangıç", "body": "İlk gün zor olabilir. Güvenli ortam, destek kişisi ve gerekirse tıbbi yardım kritik olabilir.", "motivationHint": "Yalnız değilsin; birine haber ver."},
+    {"day": 3, "title": "Gün 3 — Dalgalanma", "body": "Yoksunluk belirtileri maddeye göre değişir. Uyku, iştah ve ruh hali dalgalanabilir.", "motivationHint": "Bugünü saat saat parçala; sadece bir sonraki saati kazan."},
+    {"day": 7, "title": "Gün 7 — Stabilite arayışı", "body": "Bir haftalık süre, rutin ve tetikleyici yönetimi için önemlidir. Profesyonel destek devam etmelidir.", "motivationHint": "Temiz bir hafta — büyük bir adım."},
+    {"day": 14, "title": "Gün 14 — Yeni alışkanlıklar", "body": "Eski ortam ve kişiler risk oluşturabilir. Yeni günlük yapı (uyku, yemek, hareket) koruyucudur.", "motivationHint": "Bugün sağlıklı bir mikro-alışkanlık ekle."},
+    {"day": 30, "title": "Gün 30 — Temel sağlamlaşıyor", "body": "Bir ay, birçok kişi için umut ve özgüven artışı demektir. Relapse planı hazır tut.", "motivationHint": "Riskli anlar için yazılı bir planın olsun."},
+    {"day": 90, "title": "Gün 90 — Uzun vadeli iyileşme", "body": "İyileşme doğrusal değildir. Üç aylık süre dayanıklılığı artırır; destek grupları faydalı olabilir.", "motivationHint": "İyileşme bir süreç — bugün de içindesin."}
+  ],
+  "fallbackMotivation": [
+    "Her temiz gün, yeni bir şans.",
+    "Zor anlar geçer; sen değerlisin.",
+    "Yardım istemek güçtür."
+  ]
+}

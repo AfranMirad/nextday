@@ -1,0 +1,19 @@
+{
+  "habitId": "smoking",
+  "disclaimer": "Genel bilgilendirme amaçlıdır; tıbbi tavsiye değildir.",
+  "milestones": [
+    {"day": 1, "title": "Gün 1 — İlk nefes", "body": "Sigarayı bıraktığın ilk günde nikotin yoksunluğu başlayabilir. Vücudun toksinleri atmaya yönelir; bol su içmek ve yürüyüş yardımcı olabilir.", "motivationHint": "En zor saatler geçicidir. Bugün sadece bugünü kazan."},
+    {"day": 2, "title": "Gün 2 — Temizlik başlıyor", "body": "Karbon monoksit düzeyi düşmeye başlar; oksijen taşınması iyileşmeye yönelir. Öksürük veya irritasyon geçici olabilir.", "motivationHint": "Kriz anında 4-7-8 nefes tekniğini dene."},
+    {"day": 3, "title": "Gün 3 — Nikotin çekiliyor", "body": "Birçok kişide nikotin büyük ölçüde vücuttan uzaklaşmış olur. Yoksunluk belirtileri hâlâ hissedilebilir; bu bir iyileşme sürecinin parçasıdır.", "motivationHint": "Üç gün büyük bir eşik. Kendini ödüllendir (sigarasız)."},
+    {"day": 5, "title": "Gün 5 — Tat ve koku", "body": "Tat ve koku alma duyuların toparlanmaya başlayabilir. Yemeklerden daha fazla keyif alabilirsin.", "motivationHint": "Favori sağlıklı bir yemeği bilinçli ye."},
+    {"day": 7, "title": "Gün 7 — Bir hafta", "body": "Bir haftalık sigarasızlık, alışkanlık döngüsünü kırmada önemli bir kilometre taşıdır. Akciğer irritasyonu azalmaya başlayabilir.", "motivationHint": "Bir haftayı kutla; bir sonraki haftanın planını yaz."},
+    {"day": 14, "title": "Gün 14 — İki hafta", "body": "Dolaşım ve egzersiz kapasitesi iyileşme eğilimindedir. Nefes almak biraz daha kolay gelebilir.", "motivationHint": "Kısa bir tempolu yürüyüş yap."},
+    {"day": 30, "title": "Gün 30 — Bir ay", "body": "Bir aylık süreçte birçok kişi enerji ve nefes kapasitesinde olumlu değişimler bildirir. Risk azaltımı zamanla birikir.", "motivationHint": "Bir aylık gücünü hatırla; tetikleyicilerini yeniden gözden geçir."},
+    {"day": 90, "title": "Gün 90 — Üç ay", "body": "Uzun süreli bırakmada beyin ödül yolları yeniden dengelenmeye devam eder. Alışkanlık kimliğin güçlenir.", "motivationHint": "Artık 'bırakan' değil, 'bırakmış' biri gibi düşün."}
+  ],
+  "fallbackMotivation": [
+    "Her sigarasız nefes, geleceğine yatırımdır.",
+    "İstek gelir ve geçer; sen kalırsın.",
+    "Bugün de seçiminle hizalandın."
+  ]
+}

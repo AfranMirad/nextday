@@ -1,0 +1,18 @@
+{
+  "habitId": "sports",
+  "disclaimer": "Yeni egzersize başlamadan önce gerekirse hekime danışın.",
+  "milestones": [
+    {"day": 1, "title": "Gün 1 — Hareket başladı", "body": "İlk antrenman sonrası kas hassasiyeti (DOMS) normal olabilir. Form ve nefes, ağırlıktan önce gelir.", "motivationHint": "Bugün sadece başlamak zaferdir."},
+    {"day": 3, "title": "Gün 3 — Isınma", "body": "Vücut yeni yüke uyum sağlar. Uyku ve protein toparlanmayı destekler.", "motivationHint": "Kısa bir esneme veya yürüyüş ekle."},
+    {"day": 7, "title": "Gün 7 — Haftalık ritim", "body": "Bir haftalık düzen, motivasyondan çok takvime bağlanmayı öğretir. Kaçırılan günü telafi etmek zorunda değilsin; yarına devam et.", "motivationHint": "Gelecek haftanın 3 slotunu takvime yaz."},
+    {"day": 14, "title": "Gün 14 — Güç sinyalleri", "body": "İki haftada birçok kişi daha iyi nefes ve hafif güç artışı hisseder. Aşırı yüklenmeden progressive overload uygula.", "motivationHint": "Bir hareketi geçen haftadan biraz daha iyi yap."},
+    {"day": 30, "title": "Gün 30 — Kimlik: spor yapan", "body": "Bir aylık tutarlılık, 'spor yapan biri' kimliğini güçlendirir. Dinlenme günleri de planın parçasıdır.", "motivationHint": "Bu ayki en iyi seansını hatırla."},
+    {"day": 60, "title": "Gün 60 — Kapasite", "body": "Dayanıklılık ve kuvvet belirginleşebilir. Programını çeşitlendirmek plato riskini azaltır.", "motivationHint": "Yeni bir hareket veya tempo dene."},
+    {"day": 90, "title": "Gün 90 — Yaşam tarzı", "body": "Üç ay, sporun hayatının parçası olduğunu gösterir. Uzun vadeli sağlık için sürdürülebilir tempo şarttır.", "motivationHint": "90 gün — vücudun teşekkür ediyor."}
+  ],
+  "fallbackMotivation": [
+    "Hareket ilaçtır; dozunu bil.",
+    "Bugünkü set, yarının temelidir.",
+    "Göstermelik değil, süreklilik."
+  ]
+}

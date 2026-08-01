@@ -1,0 +1,7 @@
+# Bu dosyayı "key.properties" adıyla kopyalayın (aynı klasör: mobile/android/)
+# Gerçek parolaları yazın. key.properties Git'e EKLENMEZ.
+
+storePassword=KEYSTORE_PAROLANIZ
+keyPassword=KEYSTORE_PAROLANIZ
+keyAlias=upload
+storeFile=upload-keystore.jks

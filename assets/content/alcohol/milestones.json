@@ -1,0 +1,17 @@
+{
+  "habitId": "alcohol",
+  "disclaimer": "Genel bilgilendirme amaçlıdır; tıbbi tavsiye değildir. Ağır bağımlılıkta uzman desteği alın.",
+  "milestones": [
+    {"day": 1, "title": "Gün 1 — Net bir başlangıç", "body": "Alkolsüz ilk gününde hidrasyon ve düzenli beslenme önemlidir. Uyku bozulabilir; bu geçici olabilir.", "motivationHint": "Bugün için bir alkolsüz rutin belirle."},
+    {"day": 3, "title": "Gün 3 — Vücut dengeleniyor", "body": "Kan şekeri ve sıvı dengesi toparlanmaya başlayabilir. Sinirlilik veya istek dalgaları normaldir.", "motivationHint": "İstek gelince 10 dakika erteleme kuralı uygula."},
+    {"day": 7, "title": "Gün 7 — Daha berrak zihin", "body": "Bir haftalık alkolsüzlükte birçok kişi daha net düşünme ve daha iyi uyku bildirebilir.", "motivationHint": "Bu haftanın kazancını bir cümleyle yaz."},
+    {"day": 14, "title": "Gün 14 — Rutin oluşuyor", "body": "Sosyal tetikleyiciler hâlâ güçlü olabilir. Alternatif ritüeller (çay, yürüyüş, spor) yardımcı olur.", "motivationHint": "Riskli ortama girmeden önce bir planın olsun."},
+    {"day": 30, "title": "Gün 30 — Bir ay", "body": "Bir aylık süre, yeni kimlik ve alışkanlık için güçlü bir temeldir. Enerji ve ruh hali dalgalanmaları azalabilir.", "motivationHint": "Bir aylık seninle gurur duy."},
+    {"day": 90, "title": "Gün 90 — Kalıcı değişim", "body": "Üç ay, birçok alışkanlık biliminde önemli bir dayanıklılık eşiğidir. Destek ağını güçlendirmeye devam et.", "motivationHint": "Bu yolculuğu sürdüren nedenini yeniden oku."}
+  ],
+  "fallbackMotivation": [
+    "Kontrol sende; bir gün daha netlik.",
+    "İstek dalgası geçer — sen kalırsın.",
+    "Bugün de bilinçli bir seçim yaptın."
+  ]
+}

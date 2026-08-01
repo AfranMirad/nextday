@@ -1,0 +1,18 @@
+{
+  "habitId": "diet",
+  "disclaimer": "Kişiselleştirilmiş beslenme planı değildir; hastalık durumunda diyetisyene danışın.",
+  "milestones": [
+    {"day": 1, "title": "Gün 1 — Vücut uyumlanıyor", "body": "Yağlı / işlenmiş alışkanlıklardan uzaklaştığın ilk günde vücut şaşırabilir: açlık sinyalleri, can sıkıntısı yeme isteği normaldir.", "motivationHint": "Bugün bir öğünü bilinçli ve yavaş ye."},
+    {"day": 3, "title": "Gün 3 — Enerji dalgalanması", "body": "Kan şekeri dengesi otururken enerjin dalgalanabilir. Protein + lif + su dengesi yardımcı olur.", "motivationHint": "Su hedefini tamamla."},
+    {"day": 7, "title": "Gün 7 — Rutin oluşuyor", "body": "Bir haftalık tutarlılık, iştah hormonlarının yeni düzene alışmasına yardımcı olabilir. Tartı günlük oynamalar gösterebilir; trende bak.", "motivationHint": "Bu haftanın en iyi seçimini not et."},
+    {"day": 14, "title": "Gün 14 — Alışkanlık güçleniyor", "body": "İki haftada market ve mutfak rutinlerin netleşir. Sosyal yemekler için önceden plan yap.", "motivationHint": "Riskli bir öğün için plan B hazırla."},
+    {"day": 30, "title": "Gün 30 — Ölçülebilir ilerleme", "body": "Bir ayda enerji, uyku ve giysi rahatlığı gibi sinyaller kilo kadar önemlidir. Sustained deficit / surplus hedefine göre değişir.", "motivationHint": "Sadece kiloya değil, nasıl hissettiğine bak."},
+    {"day": 60, "title": "Gün 60 — Sürdürülebilirlik", "body": "İki ay, kısıt değil yaşam tarzı aşamasıdır. Esnek ama sınırlı yaklaşım uzun vadede daha kalıcıdır.", "motivationHint": "Sevdiğin sağlıklı bir tarifi tekrar et."},
+    {"day": 90, "title": "Gün 90 — Yeni normal", "body": "Üç ayda birçok alışkanlık otomatikleşmeye başlar. Küçük sapmalar başarısızlık değil; yola dönüş becerisidir.", "motivationHint": "Yola dönüş planın hazır olsun."}
+  ],
+  "fallbackMotivation": [
+    "Mükemmel değil, tutarlı ol.",
+    "Bir öğün seni tanımlamaz; sonraki seçim yapar.",
+    "Vücudun senin evin — özen göster."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "habitId": "masturbation",
+  "disclaimer": "Genel öz disiplin desteğidir; utanç dili kullanmaz. Gerekirse uzman desteği alın.",
+  "milestones": [
+    {"day": 1, "title": "Gün 1 — Niyet", "body": "İlk gün, farkındalık günüdür. Tetikleyicilerini (sıkıntı, gece, ekran) not etmek faydalıdır.", "motivationHint": "Bugün tetikleyicini bir cümleyle yaz."},
+    {"day": 3, "title": "Gün 3 — İstek dalgaları", "body": "İstekler gelip geçer. Dikkatini başka bir aktiviteye kaydırmak (yürüyüş, soğuk su, nefes) yardımcı olabilir.", "motivationHint": "İstek gelince 10 dakika ertele."},
+    {"day": 7, "title": "Gün 7 — Odak", "body": "Bir haftalık öz disiplin, özgüveni artırabilir. Enerjiyi yaratıcı veya sportif kanallara yönlendir.", "motivationHint": "Bu hafta kazandığın odakla küçük bir iş bitir."},
+    {"day": 14, "title": "Gün 14 — Yeni rutin", "body": "Gece ve sabah rutinlerini güçlendirmek, alışkanlık döngüsünü zayıflatır.", "motivationHint": "Yatmadan önce telefonsuz 30 dakika dene."},
+    {"day": 30, "title": "Gün 30 — Kimlik", "body": "Bir ay, 'ben bunu yapabiliyorum' inancını güçlendirir. Mükemmellik değil, tutarlılık önemlidir.", "motivationHint": "Bir aylık iradeni takdir et."},
+    {"day": 90, "title": "Gün 90 — Dengeli yaşam", "body": "Uzun vadede amaç utanç değil, bilinçli seçim ve dengedir.", "motivationHint": "Değerlerinle uyumlu günler biriktiriyorsun."}
+  ],
+  "fallbackMotivation": [
+    "İstek geçicidir; kararın kalıcı olabilir.",
+    "Bugün de kendine sözünü tuttun.",
+    "Odak senin süper gücün."
+  ]
+}
