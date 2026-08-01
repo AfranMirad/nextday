@@ -45,8 +45,9 @@ flutter:
     - assets/brand/
 
 flutter_launcher_icons:
+  remove_alpha_ios: true
   android: true
   ios: true
   image_path: assets/brand/nextday_icon.png
-  adaptive_icon_background: "#F4F8F7"
+  adaptive_icon_background: "#FFFBF8"
   adaptive_icon_foreground: assets/brand/nextday_icon.png
