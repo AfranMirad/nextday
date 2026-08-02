@@ -37,6 +37,9 @@ class AppState extends ChangeNotifier {
   /// null = follow device language
   Locale? localeOverride;
 
+  /// system | light | dark
+  ThemeMode themeMode = ThemeMode.system;
+
   Future<void> init() async {
     try {
       user = await _repo.ensureAnonymousUser();
@@ -48,6 +51,12 @@ class AppState extends ChangeNotifier {
       if (lang == 'tr' || lang == 'en') {
         localeOverride = Locale(lang!);
       }
+      final theme = await _repo.getSetting('theme_mode');
+      themeMode = switch (theme) {
+        'light' => ThemeMode.light,
+        'dark' => ThemeMode.dark,
+        _ => ThemeMode.system,
+      };
       try {
         await notifications.init();
         if (notificationsEnabled) {
@@ -73,6 +82,17 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> setThemeMode(ThemeMode mode) async {
+    themeMode = mode;
+    final value = switch (mode) {
+      ThemeMode.light => 'light',
+      ThemeMode.dark => 'dark',
+      ThemeMode.system => 'system',
+    };
+    await _repo.setSetting('theme_mode', value);
+    notifyListeners();
+  }
+
   Future<void> acceptDisclaimer() async {
     if (user == null) return;
     user = await _repo.updateUser(user!.copyWith(disclaimerAccepted: true));
@@ -92,11 +112,20 @@ class AppState extends ChangeNotifier {
     selectedInterests = Set.of(interests);
     await _repo.setSelectedInterests(selectedInterests);
     for (final g in List<HabitGoal>.from(activeGoals)) {
+      if (g.type == HabitType.custom) continue;
       if (!selectedInterests.contains(g.type)) {
         await _repo.deactivateGoal(g);
       }
     }
     activeGoals = await _repo.getActiveGoals();
+    notifyListeners();
+  }
+
+  Future<void> addInterest(HabitType type) async {
+    if (type == HabitType.custom) return;
+    if (selectedInterests.contains(type)) return;
+    selectedInterests = {...selectedInterests, type};
+    await _repo.setSelectedInterests(selectedInterests);
     notifyListeners();
   }
 

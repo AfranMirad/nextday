@@ -7,6 +7,7 @@ enum HabitType {
   masturbation,
   diet,
   sports,
+  custom,
 }
 
 extension HabitTypeX on HabitType {
@@ -24,76 +25,12 @@ extension HabitTypeX on HabitType {
         return 'diet';
       case HabitType.sports:
         return 'sports';
+      case HabitType.custom:
+        return 'custom';
     }
   }
 
-  String get titleTr {
-    switch (this) {
-      case HabitType.smoking:
-        return 'Sigara bırakma';
-      case HabitType.alcohol:
-        return 'Alkol bırakma';
-      case HabitType.drugs:
-        return 'Uyuşturucu bırakma';
-      case HabitType.masturbation:
-        return 'Mastürbasyon bırakma';
-      case HabitType.diet:
-        return 'Diyet';
-      case HabitType.sports:
-        return 'Spor';
-    }
-  }
-
-  String get shortTitleTr {
-    switch (this) {
-      case HabitType.smoking:
-        return 'Sigara';
-      case HabitType.alcohol:
-        return 'Alkol';
-      case HabitType.drugs:
-        return 'Uyuşturucu';
-      case HabitType.masturbation:
-        return 'Mastürbasyon';
-      case HabitType.diet:
-        return 'Diyet';
-      case HabitType.sports:
-        return 'Spor';
-    }
-  }
-
-  String get subtitleTr {
-    switch (this) {
-      case HabitType.smoking:
-        return 'Nefes almak ve vücudunu yenilemek için';
-      case HabitType.alcohol:
-        return 'Zihin berraklığı ve kontrol için';
-      case HabitType.drugs:
-        return 'Sağlıklı bir yaşam için destek';
-      case HabitType.masturbation:
-        return 'Öz disiplin ve odak için';
-      case HabitType.diet:
-        return 'Beslenme ve enerji dengen için';
-      case HabitType.sports:
-        return 'Hareket ve güç için';
-    }
-  }
-
-  IconData get icon {
-    switch (this) {
-      case HabitType.smoking:
-        return Icons.smoke_free;
-      case HabitType.alcohol:
-        return Icons.no_drinks;
-      case HabitType.drugs:
-        return Icons.medication_liquid;
-      case HabitType.masturbation:
-        return Icons.self_improvement;
-      case HabitType.diet:
-        return Icons.restaurant;
-      case HabitType.sports:
-        return Icons.fitness_center;
-    }
-  }
+  bool get isBuiltIn => this != HabitType.custom;
 
   bool get isQuitHabit =>
       this == HabitType.smoking ||
@@ -101,12 +38,56 @@ extension HabitTypeX on HabitType {
       this == HabitType.drugs ||
       this == HabitType.masturbation;
 
+  IconData get icon {
+    switch (this) {
+      case HabitType.smoking:
+        return Icons.smoking_rooms_outlined;
+      case HabitType.alcohol:
+        return Icons.wine_bar_outlined;
+      case HabitType.drugs:
+        return Icons.medication_outlined;
+      case HabitType.masturbation:
+        return Icons.self_improvement_outlined;
+      case HabitType.diet:
+        return Icons.eco_outlined;
+      case HabitType.sports:
+        return Icons.directions_run_outlined;
+      case HabitType.custom:
+        return Icons.flag_outlined;
+    }
+  }
+
+  /// Capsule accent inspired by brand logo (coral / sand / sage).
+  Color get badgeColor {
+    switch (this) {
+      case HabitType.smoking:
+        return const Color(0xFFE59A94);
+      case HabitType.alcohol:
+        return const Color(0xFFEBCB93);
+      case HabitType.drugs:
+        return const Color(0xFFD4A5A5);
+      case HabitType.masturbation:
+        return const Color(0xFFC4B5D4);
+      case HabitType.diet:
+        return const Color(0xFF98B48D);
+      case HabitType.sports:
+        return const Color(0xFF7FA88A);
+      case HabitType.custom:
+        return const Color(0xFF8FA89A);
+    }
+  }
+
   String get contentAssetPath => 'assets/content/$id/milestones.json';
 
   static HabitType? fromId(String id) {
+    if (id.startsWith('custom')) return HabitType.custom;
     for (final t in HabitType.values) {
       if (t.id == id) return t;
     }
     return null;
   }
+
+  static List<HabitType> get presets => HabitType.values
+      .where((t) => t != HabitType.custom)
+      .toList(growable: false);
 }

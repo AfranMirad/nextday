@@ -1,3 +1,4 @@
+import '../models/habit_goal.dart';
 import '../models/habit_type.dart';
 import 'app_localizations.dart';
 
@@ -16,6 +17,8 @@ extension HabitTypeL10n on HabitType {
         return l10n.habitDiet;
       case HabitType.sports:
         return l10n.habitSports;
+      case HabitType.custom:
+        return l10n.habitCustom;
     }
   }
 
@@ -33,6 +36,24 @@ extension HabitTypeL10n on HabitType {
         return l10n.habitDietShort;
       case HabitType.sports:
         return l10n.habitSportsShort;
+      case HabitType.custom:
+        return l10n.habitCustomShort;
     }
+  }
+}
+
+extension HabitGoalL10n on HabitGoal {
+  String displayTitle(AppLocalizations l10n) {
+    if (type == HabitType.custom) {
+      return customTitle ?? l10n.habitCustom;
+    }
+    return type.title(l10n);
+  }
+
+  String displayShort(AppLocalizations l10n) {
+    if (type == HabitType.custom) {
+      return customTitle ?? l10n.habitCustomShort;
+    }
+    return type.shortTitle(l10n);
   }
 }

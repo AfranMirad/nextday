@@ -42,6 +42,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get languageEn => 'English';
 
   @override
+  String get appearance => 'Appearance';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get themeLight => 'Light';
+
+  @override
+  String get themeDark => 'Dark';
+
+  @override
+  String get themeSystemHint => 'Match device light/dark setting';
+
+  @override
   String get profileSaved => 'Profile saved';
 
   @override
@@ -229,6 +244,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get habitSportsShort => 'Sports';
+
+  @override
+  String get habitCustom => 'Custom topic';
+
+  @override
+  String get habitCustomShort => 'Custom';
+
+  @override
+  String get newTopic => 'New topic';
+
+  @override
+  String get newTopicHint => 'Start a built-in habit or create your own';
+
+  @override
+  String get createCustomTopic => 'Create my own topic';
+
+  @override
+  String get customTopicTitle => 'Topic name';
+
+  @override
+  String get customTopicHint => 'e.g. Quit sugar, Morning meditation';
+
+  @override
+  String get pickBuiltInTopic => 'Choose a topic';
+
+  @override
+  String get startCustom => 'Start topic';
 
   @override
   String startupFailed(String error) {

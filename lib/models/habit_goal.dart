@@ -21,6 +21,12 @@ class HabitGoal {
   final Map<String, dynamic> extra;
   final bool isActive;
 
+  String? get customTitle {
+    final t = extra['title'] ?? extra['customTitle'];
+    if (t is String && t.trim().isNotEmpty) return t.trim();
+    return null;
+  }
+
   /// Current streak day number (1-based), calendar days since startDate.
   int get currentDay {
     final now = DateTime.now();
@@ -59,7 +65,7 @@ class HabitGoal {
       };
 
   factory HabitGoal.fromMap(Map<String, Object?> m) {
-    final type = HabitTypeX.fromId(m['type'] as String) ?? HabitType.smoking;
+    final type = HabitTypeX.fromId(m['type'] as String) ?? HabitType.custom;
     final extraRaw = m['extra_json'] as String? ?? '{}';
     return HabitGoal(
       id: m['id'] as String,

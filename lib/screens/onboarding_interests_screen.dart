@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/habit_badge.dart';
 import '../l10n/app_localizations.dart';
 import '../l10n/habit_l10n.dart';
 import '../models/habit_type.dart';
@@ -50,20 +51,21 @@ class _OnboardingInterestsScreenState extends State<OnboardingInterestsScreen> {
                 const SizedBox(height: 8),
                 Text(
                   l10n.interestsHint,
-                  style: const TextStyle(color: AppTheme.textMuted, height: 1.4),
+                  style: TextStyle(color: AppTheme.muted(context), height: 1.4),
                 ),
                 const SizedBox(height: 20),
               ],
               Expanded(
                 child: ListView(
-                  children: HabitType.values.map((t) {
+                  children: HabitTypeX.presets.map((t) {
                     final on = _selected.contains(t);
+                    final brand = AppTheme.brand(context);
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Material(
                         color: on
-                            ? AppTheme.primary.withValues(alpha: 0.08)
-                            : AppTheme.surface,
+                            ? t.badgeColor.withValues(alpha: 0.18)
+                            : AppTheme.card(context),
                         borderRadius:
                             BorderRadius.circular(AppTheme.radiusMd),
                         child: InkWell(
@@ -85,16 +87,14 @@ class _OnboardingInterestsScreenState extends State<OnboardingInterestsScreen> {
                                   BorderRadius.circular(AppTheme.radiusMd),
                               border: Border.all(
                                 color: on
-                                    ? AppTheme.primary
-                                    : AppTheme.border,
+                                    ? t.badgeColor
+                                    : Theme.of(context).dividerColor,
+                                width: on ? 1.5 : 1,
                               ),
                             ),
                             child: Row(
                               children: [
-                                Icon(t.icon,
-                                    color: on
-                                        ? AppTheme.primary
-                                        : AppTheme.textMuted),
+                                HabitBadge(type: t, size: 44),
                                 const SizedBox(width: 12),
                                 Expanded(
                                   child: Text(
@@ -110,8 +110,8 @@ class _OnboardingInterestsScreenState extends State<OnboardingInterestsScreen> {
                                       ? Icons.check_circle
                                       : Icons.circle_outlined,
                                   color: on
-                                      ? AppTheme.primary
-                                      : AppTheme.textSoft,
+                                      ? brand
+                                      : AppTheme.soft(context),
                                 ),
                               ],
                             ),

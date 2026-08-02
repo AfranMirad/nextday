@@ -95,6 +95,20 @@ class AppRepository {
     required Map<String, dynamic> extra,
   }) async {
     await _ensure();
+    if (type == HabitType.custom) {
+      final goal = HabitGoal(
+        id: _uuid.v4(),
+        type: type,
+        startDate: startDate,
+        createdAt: DateTime.now(),
+        extra: extra,
+      );
+      await _store.upsertById(
+        'habit_goals',
+        Map<String, dynamic>.from(goal.toMap()),
+      );
+      return goal;
+    }
     final existing = await getActiveGoalForType(type);
     if (existing != null) {
       final updated = existing.copyWith(startDate: startDate, extra: extra);

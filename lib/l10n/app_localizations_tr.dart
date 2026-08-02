@@ -42,6 +42,21 @@ class AppLocalizationsTr extends AppLocalizations {
   String get languageEn => 'İngilizce';
 
   @override
+  String get appearance => 'Görünüm';
+
+  @override
+  String get themeSystem => 'Sistem';
+
+  @override
+  String get themeLight => 'Açık';
+
+  @override
+  String get themeDark => 'Koyu';
+
+  @override
+  String get themeSystemHint => 'Cihazın açık/koyu ayarını takip eder';
+
+  @override
   String get profileSaved => 'Profil kaydedildi';
 
   @override
@@ -228,6 +243,33 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get habitSportsShort => 'Spor';
+
+  @override
+  String get habitCustom => 'Özel konu';
+
+  @override
+  String get habitCustomShort => 'Özel';
+
+  @override
+  String get newTopic => 'Yeni konu';
+
+  @override
+  String get newTopicHint => 'Hazır bir alışkanlık seç veya kendin oluştur';
+
+  @override
+  String get createCustomTopic => 'Kendi konumunu oluştur';
+
+  @override
+  String get customTopicTitle => 'Konu adı';
+
+  @override
+  String get customTopicHint => 'Örn. Şekeri bırak, Sabah meditasyonu';
+
+  @override
+  String get pickBuiltInTopic => 'Konu seç';
+
+  @override
+  String get startCustom => 'Konuyu başlat';
 
   @override
   String startupFailed(String error) {

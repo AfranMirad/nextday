@@ -164,6 +164,36 @@ abstract class AppLocalizations {
   /// **'English'**
   String get languageEn;
 
+  /// No description provided for @appearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get appearance;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get themeSystem;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get themeLight;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get themeDark;
+
+  /// No description provided for @themeSystemHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Match device light/dark setting'**
+  String get themeSystemHint;
+
   /// No description provided for @profileSaved.
   ///
   /// In en, this message translates to:
@@ -517,6 +547,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sports'**
   String get habitSportsShort;
+
+  /// No description provided for @habitCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom topic'**
+  String get habitCustom;
+
+  /// No description provided for @habitCustomShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get habitCustomShort;
+
+  /// No description provided for @newTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'New topic'**
+  String get newTopic;
+
+  /// No description provided for @newTopicHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Start a built-in habit or create your own'**
+  String get newTopicHint;
+
+  /// No description provided for @createCustomTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'Create my own topic'**
+  String get createCustomTopic;
+
+  /// No description provided for @customTopicTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic name'**
+  String get customTopicTitle;
+
+  /// No description provided for @customTopicHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Quit sugar, Morning meditation'**
+  String get customTopicHint;
+
+  /// No description provided for @pickBuiltInTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a topic'**
+  String get pickBuiltInTopic;
+
+  /// No description provided for @startCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Start topic'**
+  String get startCustom;
 
   /// No description provided for @startupFailed.
   ///

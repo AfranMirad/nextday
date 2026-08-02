@@ -32,7 +32,7 @@ class DisclaimerScreen extends StatelessWidget {
                     AppConfig.appName,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.w800,
-                          color: AppTheme.primary,
+                          color: AppTheme.brand(context),
                         ),
                   ),
                 ],
@@ -41,7 +41,7 @@ class DisclaimerScreen extends StatelessWidget {
               Text(
                 l10n.appTagline,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: AppTheme.textMuted,
+                      color: AppTheme.muted(context),
                     ),
               ),
               const SizedBox(height: 32),
@@ -50,15 +50,15 @@ class DisclaimerScreen extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: AppTheme.surface,
+                      color: AppTheme.card(context),
                       borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-                      border: Border.all(color: AppTheme.border),
+                      border: Border.all(color: Theme.of(context).dividerColor),
                     ),
                     child: Text(
                       '${l10n.importantNotice}\n\n${l10n.disclaimerBody}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         height: 1.45,
-                        color: AppTheme.text,
+                        color: AppTheme.ink(context),
                         fontSize: 15,
                       ),
                     ),

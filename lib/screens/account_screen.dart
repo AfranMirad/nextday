@@ -64,15 +64,57 @@ class _AccountScreenState extends State<AccountScreen> {
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: AppTheme.surface2,
+              color: AppTheme.cardAlt(context),
               borderRadius: BorderRadius.circular(AppTheme.radiusMd),
             ),
             child: Text(
               l10n.autoAccountHint,
-              style: const TextStyle(color: AppTheme.textMuted, height: 1.4),
+              style: TextStyle(color: AppTheme.muted(context), height: 1.4),
             ),
           ),
           const SizedBox(height: 16),
+          Text(
+            l10n.appearance,
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+          ),
+          const SizedBox(height: 8),
+          SegmentedButton<ThemeMode>(
+            segments: [
+              ButtonSegment(
+                value: ThemeMode.system,
+                icon: const Icon(Icons.brightness_auto, size: 18),
+                label: Text(l10n.themeSystem),
+                tooltip: l10n.themeSystemHint,
+              ),
+              ButtonSegment(
+                value: ThemeMode.light,
+                icon: const Icon(Icons.light_mode_outlined, size: 18),
+                label: Text(l10n.themeLight),
+              ),
+              ButtonSegment(
+                value: ThemeMode.dark,
+                icon: const Icon(Icons.dark_mode_outlined, size: 18),
+                label: Text(l10n.themeDark),
+              ),
+            ],
+            selected: {app.themeMode},
+            onSelectionChanged: (set) {
+              if (set.isEmpty) return;
+              app.setThemeMode(set.first);
+            },
+          ),
+          const SizedBox(height: 8),
+          Text(
+            l10n.themeSystemHint,
+            style: TextStyle(
+              fontSize: 12,
+              color: AppTheme.soft(context),
+              height: 1.3,
+            ),
+          ),
+          const SizedBox(height: 8),
           ListTile(
             contentPadding: EdgeInsets.zero,
             leading: const Icon(Icons.language),
@@ -180,7 +222,7 @@ class _AccountScreenState extends State<AccountScreen> {
             contentPadding: EdgeInsets.zero,
             leading: Icon(
               mono.adsRemoved ? Icons.verified : Icons.workspace_premium_outlined,
-              color: AppTheme.primary,
+              color: AppTheme.brand(context),
             ),
             title: Text(mono.adsRemoved ? l10n.adsRemoved : l10n.removeAds),
             subtitle: Text(l10n.removeAdsHint),
@@ -250,7 +292,7 @@ class _AccountScreenState extends State<AccountScreen> {
               AppConfig.hasAiConfigured
                   ? Icons.auto_awesome
                   : Icons.auto_awesome_outlined,
-              color: AppTheme.primary,
+              color: AppTheme.brand(context),
             ),
             title: Text(l10n.aiMotivation),
             subtitle: Text(
@@ -262,9 +304,9 @@ class _AccountScreenState extends State<AccountScreen> {
           const SizedBox(height: 8),
           Text(
             l10n.healthDisclaimerShort,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 12,
-              color: AppTheme.textSoft,
+              color: AppTheme.soft(context),
               height: 1.4,
             ),
           ),

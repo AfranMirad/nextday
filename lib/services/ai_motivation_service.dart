@@ -1,11 +1,11 @@
 import 'dart:convert';
-import '../models/habit_type.dart';
 
 import 'package:http/http.dart' as http;
 
 import '../config.dart';
 import '../models/daily_entry.dart';
 import '../models/habit_goal.dart';
+import '../models/habit_type.dart';
 import '../models/milestone.dart';
 import '../models/user_profile.dart';
 
@@ -82,7 +82,9 @@ class AiMotivationService {
       ..writeln('2-4 kısa cümle yaz. Samimi, tutarlı ve motive edici ol.')
       ..writeln('Bugünkü bilimsel/eğitsel bilgiyi değiştirme; onu pekiştir.')
       ..writeln()
-      ..writeln('Hedef: ${goal.type.titleTr}')
+      ..writeln(
+        'Hedef: ${goal.customTitle ?? goal.type.id}',
+      )
       ..writeln('Gün: $dayNumber')
       ..writeln('Yaş: ${user.age ?? 'bilinmiyor'}')
       ..writeln('Cinsiyet: ${user.gender ?? 'bilinmiyor'}')

@@ -66,7 +66,7 @@ class _BannerAdSlotState extends State<BannerAdSlot> {
       return const SizedBox.shrink();
     }
     return ColoredBox(
-      color: AppTheme.surface,
+      color: AppTheme.card(context),
       child: SizedBox(
         width: _banner!.size.width.toDouble(),
         height: _banner!.size.height.toDouble(),

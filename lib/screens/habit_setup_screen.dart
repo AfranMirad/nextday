@@ -40,6 +40,9 @@ class _HabitSetupScreenState extends State<HabitSetupScreen> {
   String _sportsLevel = 'beginner';
   final _weeklyDaysCtrl = TextEditingController(text: '3');
 
+  // custom
+  final _customTitleCtrl = TextEditingController();
+
   // shared from profile prefill
   final _ageCtrl = TextEditingController();
   String? _gender;
@@ -50,7 +53,9 @@ class _HabitSetupScreenState extends State<HabitSetupScreen> {
     final user = context.read<AppState>().user;
     if (user?.age != null) _ageCtrl.text = '${user!.age}';
     _gender = user?.gender;
-    final existing = context.read<AppState>().goalFor(widget.type);
+    final existing = widget.type == HabitType.custom
+        ? null
+        : context.read<AppState>().goalFor(widget.type);
     if (existing != null) {
       _startDate = existing.startDate;
       final e = existing.extra;
@@ -78,6 +83,7 @@ class _HabitSetupScreenState extends State<HabitSetupScreen> {
     _targetWeightCtrl.dispose();
     _conditionsCtrl.dispose();
     _weeklyDaysCtrl.dispose();
+    _customTitleCtrl.dispose();
     _ageCtrl.dispose();
     super.dispose();
   }
@@ -111,6 +117,10 @@ class _HabitSetupScreenState extends State<HabitSetupScreen> {
         return {
           'level': _sportsLevel,
           'weeklyDays': int.tryParse(_weeklyDaysCtrl.text.trim()) ?? 3,
+        };
+      case HabitType.custom:
+        return {
+          'title': _customTitleCtrl.text.trim(),
         };
     }
   }
@@ -175,6 +185,14 @@ class _HabitSetupScreenState extends State<HabitSetupScreen> {
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () async {
+                final l10n = AppLocalizations.of(context);
+                if (widget.type == HabitType.custom &&
+                    _customTitleCtrl.text.trim().isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(l10n.customTopicTitle)),
+                  );
+                  return;
+                }
                 final app = context.read<AppState>();
                 final age = int.tryParse(_ageCtrl.text.trim());
                 await app.updateProfile(age: age, gender: _gender);
@@ -233,9 +251,9 @@ class _HabitSetupScreenState extends State<HabitSetupScreen> {
         ];
       case HabitType.masturbation:
         return [
-          const Text(
+          Text(
             'Ek alan gerekmez. İstersen başlangıç tarihini ayarla.',
-            style: TextStyle(color: AppTheme.textMuted),
+            style: TextStyle(color: AppTheme.muted(context)),
           ),
         ];
       case HabitType.diet:
@@ -285,6 +303,18 @@ class _HabitSetupScreenState extends State<HabitSetupScreen> {
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
               labelText: 'Haftalık hedef gün',
+            ),
+          ),
+        ];
+      case HabitType.custom:
+        final l10n = AppLocalizations.of(context);
+        return [
+          TextFormField(
+            controller: _customTitleCtrl,
+            textCapitalization: TextCapitalization.sentences,
+            decoration: InputDecoration(
+              labelText: l10n.customTopicTitle,
+              hintText: l10n.customTopicHint,
             ),
           ),
         ];

@@ -77,7 +77,9 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(goal != null ? goal.type.title(l10n) : 'NextDay'),
+        title: Text(
+          goal != null ? goal.displayTitle(l10n) : 'NextDay',
+        ),
         actions: [
           if (goal != null)
             IconButton(
@@ -106,7 +108,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                         children: [
                           _DayHero(
                             day: goal.currentDay,
-                            typeTitle: goal.type.shortTitle(l10n),
+                            typeTitle: goal.displayShort(l10n),
                           ),
                           const SizedBox(height: 16),
                           _SectionCard(
@@ -121,9 +123,9 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                             title: l10n.motivation,
                             trailing: Text(
                               _sourceLabel(l10n, _today?.source),
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 12,
-                                color: AppTheme.textSoft,
+                                color: AppTheme.soft(context),
                               ),
                             ),
                             child: Text(
@@ -150,7 +152,7 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                               child: Container(
                                 padding: const EdgeInsets.all(12),
                                 decoration: BoxDecoration(
-                                  color: AppTheme.surface2,
+                                  color: AppTheme.cardAlt(context),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Column(
@@ -166,8 +168,8 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                                       const SizedBox(height: 4),
                                       Text(
                                         e.motivationText!,
-                                        style: const TextStyle(
-                                          color: AppTheme.textMuted,
+                                        style: TextStyle(
+                                          color: AppTheme.muted(context),
                                           height: 1.35,
                                         ),
                                       ),
@@ -219,9 +221,9 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
                           const SizedBox(height: 12),
                           Text(
                             l10n.contentDisclaimer,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 12,
-                              color: AppTheme.textSoft,
+                              color: AppTheme.soft(context),
                             ),
                           ),
                         ],
@@ -303,7 +305,7 @@ class _SectionCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppTheme.surface,
+        color: AppTheme.card(context),
         borderRadius: BorderRadius.circular(AppTheme.radiusMd),
         border: Border.all(color: AppTheme.border),
       ),
