@@ -19,7 +19,7 @@ class AccountScreen extends StatefulWidget {
 
 class _AccountScreenState extends State<AccountScreen> {
   late final TextEditingController _nameCtrl;
-  late final TextEditingController _ageCtrl;
+  DateTime? _birthDate;
   String? _gender;
 
   @override
@@ -27,18 +27,31 @@ class _AccountScreenState extends State<AccountScreen> {
     super.initState();
     final user = context.read<AppState>().user;
     _nameCtrl = TextEditingController(text: user?.displayName ?? '');
-    _ageCtrl = TextEditingController(
-      text: user?.age != null ? '${user!.age}' : '',
-    );
+    _birthDate = user?.birthDate;
     _gender = user?.gender;
   }
 
   @override
   void dispose() {
     _nameCtrl.dispose();
-    _ageCtrl.dispose();
     super.dispose();
   }
+
+  Future<void> _pickBirthDate() async {
+    final now = DateTime.now();
+    final initial = _birthDate ?? DateTime(now.year - 25, now.month, now.day);
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: initial,
+      firstDate: DateTime(now.year - 120),
+      lastDate: now,
+      helpText: AppLocalizations.of(context).birthDate,
+    );
+    if (picked != null) setState(() => _birthDate = picked);
+  }
+
+  String _formatDate(DateTime d) =>
+      '${d.day.toString().padLeft(2, '0')}.${d.month.toString().padLeft(2, '0')}.${d.year}';
 
   @override
   Widget build(BuildContext context) {
@@ -158,10 +171,16 @@ class _AccountScreenState extends State<AccountScreen> {
             decoration: InputDecoration(labelText: l10n.displayName),
           ),
           const SizedBox(height: 10),
-          TextField(
-            controller: _ageCtrl,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(labelText: l10n.age),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            title: Text(l10n.birthDate),
+            subtitle: Text(
+              _birthDate != null
+                  ? _formatDate(_birthDate!)
+                  : l10n.birthDateHint,
+            ),
+            trailing: const Icon(Icons.calendar_today_outlined),
+            onTap: _pickBirthDate,
           ),
           const SizedBox(height: 10),
           DropdownButtonFormField<String>(
@@ -185,7 +204,8 @@ class _AccountScreenState extends State<AccountScreen> {
                 displayName: _nameCtrl.text.trim().isEmpty
                     ? null
                     : _nameCtrl.text.trim(),
-                age: int.tryParse(_ageCtrl.text.trim()),
+                birthDate: _birthDate,
+                clearBirthDate: _birthDate == null,
                 gender: _gender,
               );
               if (context.mounted) {

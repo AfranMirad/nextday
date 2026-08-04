@@ -66,6 +66,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get age => 'Yaş';
 
   @override
+  String get birthDate => 'Doğum tarihi';
+
+  @override
+  String get birthDateHint => 'İçeriği kişiselleştirmek için kullanılır';
+
+  @override
   String get gender => 'Cinsiyet';
 
   @override
@@ -192,7 +198,18 @@ class AppLocalizationsTr extends AppLocalizations {
       'Bu uygulama tıbbi teşhis, tedavi veya acil müdahale sunmaz. Günlük vücut değişimi ve motivasyon metinleri genel bilgilendirme amaçlıdır; kişiye özel tıbbi tavsiye yerine geçmez.\n\nBağımlılık, diyet veya sağlık durumunuz için bir sağlık profesyoneline danışın. Acil bir durumda yerel acil servisleri arayın.\n\nVerileriniz varsayılan olarak cihazınızda saklanır.';
 
   @override
-  String get understoodContinue => 'Anladım, devam et';
+  String get aiConsentTitle => 'Yapay zeka ile günlük içerik';
+
+  @override
+  String get aiConsentBody =>
+      'NextDay, seçtiğin alışkanlık yolculuğuna göre her gün kısa tavsiye ve motivasyon sözleri üretebilir. Bu metinler yapay zeka desteğiyle belirlenir; tıbbi teşhis veya tedavi yerine geçmez.\n\nİsim, soyisim ve seni doğrudan tanımlayan kişisel verilerin yapay zekaya gönderilmez. Yalnızca alışkanlık ilerlemen ve isteğe bağlı profil özetin (ör. yaş aralığı / cinsiyet tercihin) kişiselleştirme için kullanılabilir. Verilerin varsayılan olarak cihazında kalır.';
+
+  @override
+  String get aiConsentCheckbox =>
+      'Yapay zeka ile günlük tavsiye ve motivasyon sözlerinin bu şekilde üretilmesini, isim-soyisim ve kişisel verilerimin bu kapsamda korunmasını onaylıyorum.';
+
+  @override
+  String get understoodContinue => 'Onayla ve devam et';
 
   @override
   String setupTitle(String topic) {
@@ -251,13 +268,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get habitCustomShort => 'Özel';
 
   @override
-  String get newTopic => 'Yeni konu';
+  String get newTopic => 'Yeni';
 
   @override
   String get newTopicHint => 'Hazır bir alışkanlık seç veya kendin oluştur';
 
   @override
-  String get createCustomTopic => 'Kendi konumunu oluştur';
+  String get createCustomTopic => 'Kendi konunu oluştur';
 
   @override
   String get customTopicTitle => 'Konu adı';
@@ -270,6 +287,43 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get startCustom => 'Konuyu başlat';
+
+  @override
+  String get catAddiction => 'Bağımlılık bırakma';
+
+  @override
+  String get catNutritionQuit => 'Beslenme & sağlık (bırakma)';
+
+  @override
+  String get catDigitalDetox => 'Teknoloji & dijital detoks';
+
+  @override
+  String get catMentalQuit => 'Zihinsel & psikolojik alışkanlıklar';
+
+  @override
+  String get catHealthStart => 'Sağlık & spor (başlama)';
+
+  @override
+  String get catGrowthStart => 'Kişisel gelişim & zihin';
+
+  @override
+  String get catLifestyleStart => 'Yaşam tarzı & düzen';
+
+  @override
+  String get sectionQuitHint =>
+      'Bırakmak veya azaltmak istediğin alışkanlıklar';
+
+  @override
+  String get sectionStartHint =>
+      'Başlamak ve sürdürmek istediğin alışkanlıklar';
+
+  @override
+  String get searchTopics => 'Konu ara';
+
+  @override
+  String selectedCount(int count) {
+    return '$count seçili';
+  }
 
   @override
   String startupFailed(String error) {

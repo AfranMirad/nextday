@@ -66,6 +66,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get age => 'Age';
 
   @override
+  String get birthDate => 'Date of birth';
+
+  @override
+  String get birthDateHint => 'Used to personalize content';
+
+  @override
   String get gender => 'Gender';
 
   @override
@@ -193,7 +199,18 @@ class AppLocalizationsEn extends AppLocalizations {
       'This app does not provide medical diagnosis, treatment, or emergency care. Daily body-change and motivation texts are general information; they are not personalized medical advice.\n\nFor addiction, diet, or health conditions, consult a professional. In an emergency, call local emergency services.\n\nYour data is stored on your device by default.';
 
   @override
-  String get understoodContinue => 'I understand, continue';
+  String get aiConsentTitle => 'Daily content with AI';
+
+  @override
+  String get aiConsentBody =>
+      'NextDay can generate short daily tips and motivational lines for the habit journey you choose. These texts may be produced with AI support and are not medical diagnosis or treatment.\n\nYour first name, last name, and directly identifying personal data are not sent to AI. Only your habit progress and optional profile summary (e.g. age range / gender preference) may be used for personalization. Your data stays on your device by default.';
+
+  @override
+  String get aiConsentCheckbox =>
+      'I agree that daily tips and motivation may be generated with AI as described, and that my name and personal data are protected in this scope.';
+
+  @override
+  String get understoodContinue => 'Agree and continue';
 
   @override
   String setupTitle(String topic) {
@@ -252,7 +269,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get habitCustomShort => 'Custom';
 
   @override
-  String get newTopic => 'New topic';
+  String get newTopic => 'New';
 
   @override
   String get newTopicHint => 'Start a built-in habit or create your own';
@@ -271,6 +288,41 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get startCustom => 'Start topic';
+
+  @override
+  String get catAddiction => 'Addiction quitting';
+
+  @override
+  String get catNutritionQuit => 'Nutrition & health (quit)';
+
+  @override
+  String get catDigitalDetox => 'Technology & digital detox';
+
+  @override
+  String get catMentalQuit => 'Mental & psychological habits';
+
+  @override
+  String get catHealthStart => 'Health & sports (start)';
+
+  @override
+  String get catGrowthStart => 'Personal growth & mind';
+
+  @override
+  String get catLifestyleStart => 'Lifestyle & organization';
+
+  @override
+  String get sectionQuitHint => 'Habits to quit or reduce';
+
+  @override
+  String get sectionStartHint => 'Habits to start and sustain';
+
+  @override
+  String get searchTopics => 'Search topics';
+
+  @override
+  String selectedCount(int count) {
+    return '$count selected';
+  }
 
   @override
   String startupFailed(String error) {

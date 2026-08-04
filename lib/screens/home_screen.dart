@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../config.dart';
 import '../l10n/app_localizations.dart';
 import '../l10n/habit_l10n.dart';
+import '../models/habit_catalog.dart';
 import '../models/habit_type.dart';
 import '../state/app_state.dart';
 import '../theme/app_theme.dart';
@@ -19,17 +20,15 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final app = context.watch<AppState>();
     final l10n = AppLocalizations.of(context);
-    final interests = HabitTypeX.presets
-        .where(app.selectedInterests.contains)
-        .toList();
+    final interests =
+        HabitType.presets.where(app.selectedInterests.contains).toList();
     final customGoals =
-        app.activeGoals.where((g) => g.type == HabitType.custom).toList();
-
+        app.activeGoals.where((g) => g.type.isCustom).toList();
     final hasCards = interests.isNotEmpty || customGoals.isNotEmpty;
 
     return Scaffold(
       appBar: AppBar(
-            title: Text(AppConfig.appName),
+        title: Text(AppConfig.appName),
         actions: [
           IconButton(
             tooltip: l10n.interests,
@@ -155,58 +154,55 @@ class HomeScreen extends StatelessWidget {
       isScrollControlled: true,
       showDragHandle: true,
       builder: (ctx) {
-        final unused = HabitTypeX.presets
+        final unused = HabitType.presets
             .where((t) => !app.selectedInterests.contains(t))
             .toList();
         return SafeArea(
-          child: Padding(
-            padding: EdgeInsets.only(
-              left: 16,
-              right: 16,
-              bottom: MediaQuery.paddingOf(ctx).bottom + 16,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  l10n.newTopic,
-                  style: Theme.of(ctx).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w800,
-                      ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  l10n.newTopicHint,
-                  style: TextStyle(color: AppTheme.muted(ctx)),
-                ),
-                const SizedBox(height: 12),
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: const HabitBadge(type: HabitType.custom, size: 44),
-                  title: Text(l10n.createCustomTopic),
-                  trailing: const Icon(Icons.chevron_right),
-                  onTap: () => Navigator.pop(ctx, 'custom'),
-                ),
-                if (unused.isNotEmpty) ...[
-                  const Divider(),
+          child: SizedBox(
+            height: MediaQuery.sizeOf(ctx).height * 0.75,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 16,
+                right: 16,
+                bottom: MediaQuery.paddingOf(ctx).bottom + 8,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
                   Text(
-                    l10n.pickBuiltInTopic,
-                    style: Theme.of(ctx).textTheme.titleSmall?.copyWith(
-                          fontWeight: FontWeight.w700,
+                    l10n.newTopic,
+                    style: Theme.of(ctx).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w800,
                         ),
                   ),
+                  const SizedBox(height: 4),
+                  Text(
+                    l10n.newTopicHint,
+                    style: TextStyle(color: AppTheme.muted(ctx)),
+                  ),
                   const SizedBox(height: 8),
-                  ...unused.map(
-                    (t) => ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      leading: HabitBadge(type: t, size: 44),
-                      title: Text(t.title(l10n)),
-                      onTap: () => Navigator.pop(ctx, t),
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    leading: const HabitBadge(type: HabitType.custom, size: 44),
+                    title: Text(l10n.createCustomTopic),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => Navigator.pop(ctx, 'custom'),
+                  ),
+                  const Divider(),
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        for (final category in HabitCatalog.orderedCategories)
+                          _NewTopicCategory(
+                            category: category,
+                            unused: unused,
+                            onPick: (t) => Navigator.pop(ctx, t),
+                          ),
+                      ],
                     ),
                   ),
                 ],
-              ],
+              ),
             ),
           ),
         );
@@ -233,6 +229,45 @@ class HomeScreen extends StatelessWidget {
         ),
       );
     }
+  }
+}
+
+class _NewTopicCategory extends StatelessWidget {
+  const _NewTopicCategory({
+    required this.category,
+    required this.unused,
+    required this.onPick,
+  });
+
+  final HabitCategory category;
+  final List<HabitType> unused;
+  final ValueChanged<HabitType> onPick;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final items = unused.where((t) => t.category == category).toList();
+    if (items.isEmpty) return const SizedBox.shrink();
+    return Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        initiallyExpanded: false,
+        tilePadding: EdgeInsets.zero,
+        title: Text(
+          category.title(l10n),
+          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 14),
+        ),
+        children: [
+          for (final t in items)
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: HabitBadge(type: t, size: 40),
+              title: Text(t.title(l10n)),
+              onTap: () => onPick(t),
+            ),
+        ],
+      ),
+    );
   }
 }
 

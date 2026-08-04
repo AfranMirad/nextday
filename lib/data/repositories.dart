@@ -47,7 +47,7 @@ class AppRepository {
     await _ensure();
     final out = <HabitType>{};
     for (final r in _store.table('selected_interests')) {
-      final t = HabitTypeX.fromId(r['habit_type'] as String);
+      final t = HabitType.fromId(r['habit_type'] as String);
       if (t != null) out.add(t);
     }
     return out;
@@ -95,7 +95,7 @@ class AppRepository {
     required Map<String, dynamic> extra,
   }) async {
     await _ensure();
-    if (type == HabitType.custom) {
+    if (type.isCustom) {
       final goal = HabitGoal(
         id: _uuid.v4(),
         type: type,

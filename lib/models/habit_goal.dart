@@ -65,7 +65,7 @@ class HabitGoal {
       };
 
   factory HabitGoal.fromMap(Map<String, Object?> m) {
-    final type = HabitTypeX.fromId(m['type'] as String) ?? HabitType.custom;
+    final type = HabitType.fromId(m['type'] as String) ?? HabitType.custom;
     final extraRaw = m['extra_json'] as String? ?? '{}';
     return HabitGoal(
       id: m['id'] as String,

@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 import '../config.dart';
 import '../models/daily_entry.dart';
 import '../models/habit_goal.dart';
-import '../models/habit_type.dart';
 import '../models/milestone.dart';
 import '../models/user_profile.dart';
 
@@ -86,8 +85,9 @@ class AiMotivationService {
         'Hedef: ${goal.customTitle ?? goal.type.id}',
       )
       ..writeln('Gün: $dayNumber')
-      ..writeln('Yaş: ${user.age ?? 'bilinmiyor'}')
+      ..writeln('Yaş: ${user.computedAge ?? 'bilinmiyor'}')
       ..writeln('Cinsiyet: ${user.gender ?? 'bilinmiyor'}')
+      // Do not send display name, surname, or full birth date to the model.
       ..writeln('Profil alanları: ${jsonEncode(goal.extra)}')
       ..writeln('Bugünkü başlık: ${milestone.title}')
       ..writeln('Bugünkü bilgi: ${milestone.body}')

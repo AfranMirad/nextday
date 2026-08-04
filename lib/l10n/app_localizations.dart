@@ -212,6 +212,18 @@ abstract class AppLocalizations {
   /// **'Age'**
   String get age;
 
+  /// No description provided for @birthDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of birth'**
+  String get birthDate;
+
+  /// No description provided for @birthDateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Used to personalize content'**
+  String get birthDateHint;
+
   /// No description provided for @gender.
   ///
   /// In en, this message translates to:
@@ -446,10 +458,28 @@ abstract class AppLocalizations {
   /// **'This app does not provide medical diagnosis, treatment, or emergency care. Daily body-change and motivation texts are general information; they are not personalized medical advice.\n\nFor addiction, diet, or health conditions, consult a professional. In an emergency, call local emergency services.\n\nYour data is stored on your device by default.'**
   String get disclaimerBody;
 
+  /// No description provided for @aiConsentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily content with AI'**
+  String get aiConsentTitle;
+
+  /// No description provided for @aiConsentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'NextDay can generate short daily tips and motivational lines for the habit journey you choose. These texts may be produced with AI support and are not medical diagnosis or treatment.\n\nYour first name, last name, and directly identifying personal data are not sent to AI. Only your habit progress and optional profile summary (e.g. age range / gender preference) may be used for personalization. Your data stays on your device by default.'**
+  String get aiConsentBody;
+
+  /// No description provided for @aiConsentCheckbox.
+  ///
+  /// In en, this message translates to:
+  /// **'I agree that daily tips and motivation may be generated with AI as described, and that my name and personal data are protected in this scope.'**
+  String get aiConsentCheckbox;
+
   /// No description provided for @understoodContinue.
   ///
   /// In en, this message translates to:
-  /// **'I understand, continue'**
+  /// **'Agree and continue'**
   String get understoodContinue;
 
   /// No description provided for @setupTitle.
@@ -563,7 +593,7 @@ abstract class AppLocalizations {
   /// No description provided for @newTopic.
   ///
   /// In en, this message translates to:
-  /// **'New topic'**
+  /// **'New'**
   String get newTopic;
 
   /// No description provided for @newTopicHint.
@@ -601,6 +631,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Start topic'**
   String get startCustom;
+
+  /// No description provided for @catAddiction.
+  ///
+  /// In en, this message translates to:
+  /// **'Addiction quitting'**
+  String get catAddiction;
+
+  /// No description provided for @catNutritionQuit.
+  ///
+  /// In en, this message translates to:
+  /// **'Nutrition & health (quit)'**
+  String get catNutritionQuit;
+
+  /// No description provided for @catDigitalDetox.
+  ///
+  /// In en, this message translates to:
+  /// **'Technology & digital detox'**
+  String get catDigitalDetox;
+
+  /// No description provided for @catMentalQuit.
+  ///
+  /// In en, this message translates to:
+  /// **'Mental & psychological habits'**
+  String get catMentalQuit;
+
+  /// No description provided for @catHealthStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Health & sports (start)'**
+  String get catHealthStart;
+
+  /// No description provided for @catGrowthStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal growth & mind'**
+  String get catGrowthStart;
+
+  /// No description provided for @catLifestyleStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Lifestyle & organization'**
+  String get catLifestyleStart;
+
+  /// No description provided for @sectionQuitHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Habits to quit or reduce'**
+  String get sectionQuitHint;
+
+  /// No description provided for @sectionStartHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Habits to start and sustain'**
+  String get sectionStartHint;
+
+  /// No description provided for @searchTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'Search topics'**
+  String get searchTopics;
+
+  /// No description provided for @selectedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} selected'**
+  String selectedCount(int count);
 
   /// No description provided for @startupFailed.
   ///

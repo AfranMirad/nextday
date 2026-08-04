@@ -112,7 +112,7 @@ class AppState extends ChangeNotifier {
     selectedInterests = Set.of(interests);
     await _repo.setSelectedInterests(selectedInterests);
     for (final g in List<HabitGoal>.from(activeGoals)) {
-      if (g.type == HabitType.custom) continue;
+      if (g.type.isCustom) continue;
       if (!selectedInterests.contains(g.type)) {
         await _repo.deactivateGoal(g);
       }
@@ -122,7 +122,7 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> addInterest(HabitType type) async {
-    if (type == HabitType.custom) return;
+    if (type.isCustom) return;
     if (selectedInterests.contains(type)) return;
     selectedInterests = {...selectedInterests, type};
     await _repo.setSelectedInterests(selectedInterests);
@@ -131,15 +131,20 @@ class AppState extends ChangeNotifier {
 
   Future<void> updateProfile({
     String? displayName,
+    DateTime? birthDate,
     int? age,
     String? gender,
+    bool clearBirthDate = false,
   }) async {
     if (user == null) return;
     user = await _repo.updateUser(
       user!.copyWith(
         displayName: displayName,
+        birthDate: birthDate,
         age: age,
         gender: gender,
+        clearBirthDate: clearBirthDate,
+        clearAge: birthDate != null || clearBirthDate,
       ),
     );
     notifyListeners();
@@ -216,13 +221,17 @@ class AppState extends ChangeNotifier {
 
   Future<void> setNotificationsEnabled(bool enabled) async {
     notificationsEnabled = enabled;
-    await _repo.setSetting('notifications_enabled', enabled ? '1' : '0');
-    if (enabled) {
-      await notifications.requestPermissions();
-      await notifications.scheduleDailyReminder();
-    } else {
-      await notifications.cancelDailyReminder();
-    }
     notifyListeners();
+    await _repo.setSetting('notifications_enabled', enabled ? '1' : '0');
+    try {
+      if (enabled) {
+        await notifications.requestPermissions();
+        await notifications.scheduleDailyReminder();
+      } else {
+        await notifications.cancelDailyReminder();
+      }
+    } catch (_) {
+      // UI already reflects preference; scheduling can fail without blocking toggle.
+    }
   }
 }

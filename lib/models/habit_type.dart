@@ -1,93 +1,82 @@
 import 'package:flutter/material.dart';
 
-enum HabitType {
-  smoking,
-  alcohol,
-  drugs,
-  masturbation,
-  diet,
-  sports,
-  custom,
-}
+import 'habit_catalog.dart';
 
-extension HabitTypeX on HabitType {
-  String get id {
-    switch (this) {
-      case HabitType.smoking:
-        return 'smoking';
-      case HabitType.alcohol:
-        return 'alcohol';
-      case HabitType.drugs:
-        return 'drugs';
-      case HabitType.masturbation:
-        return 'masturbation';
-      case HabitType.diet:
-        return 'diet';
-      case HabitType.sports:
-        return 'sports';
-      case HabitType.custom:
-        return 'custom';
-    }
-  }
+@immutable
+class HabitType {
+  const HabitType._(this.id);
 
-  bool get isBuiltIn => this != HabitType.custom;
+  final String id;
 
-  bool get isQuitHabit =>
-      this == HabitType.smoking ||
-      this == HabitType.alcohol ||
-      this == HabitType.drugs ||
-      this == HabitType.masturbation;
+  static const custom = HabitType._('custom');
 
-  IconData get icon {
-    switch (this) {
-      case HabitType.smoking:
-        return Icons.smoking_rooms_outlined;
-      case HabitType.alcohol:
-        return Icons.wine_bar_outlined;
-      case HabitType.drugs:
-        return Icons.medication_outlined;
-      case HabitType.masturbation:
-        return Icons.self_improvement_outlined;
-      case HabitType.diet:
-        return Icons.eco_outlined;
-      case HabitType.sports:
-        return Icons.directions_run_outlined;
-      case HabitType.custom:
-        return Icons.flag_outlined;
-    }
-  }
+  static const smoking = HabitType._('smoking');
+  static const alcohol = HabitType._('alcohol');
+  static const drugs = HabitType._('drugs');
+  static const masturbation = HabitType._('masturbation');
+  static const diet = HabitType._('diet');
+  static const sports = HabitType._('sports');
 
-  /// Capsule accent inspired by brand logo (coral / sand / sage).
-  Color get badgeColor {
-    switch (this) {
-      case HabitType.smoking:
-        return const Color(0xFFE59A94);
-      case HabitType.alcohol:
-        return const Color(0xFFEBCB93);
-      case HabitType.drugs:
-        return const Color(0xFFD4A5A5);
-      case HabitType.masturbation:
-        return const Color(0xFFC4B5D4);
-      case HabitType.diet:
-        return const Color(0xFF98B48D);
-      case HabitType.sports:
-        return const Color(0xFF7FA88A);
-      case HabitType.custom:
-        return const Color(0xFF8FA89A);
-    }
-  }
+  bool get isCustom => id == 'custom' || id.startsWith('custom');
+
+  bool get isBuiltIn => !isCustom;
+
+  HabitDefinition? get definition =>
+      isCustom ? null : HabitCatalog.byId(id);
+
+  HabitDefinition get def =>
+      definition ??
+      const HabitDefinition(
+        id: 'custom',
+        category: HabitCategory.lifestyleStart,
+        kind: HabitKind.start,
+        titleTr: 'Özel konu',
+        titleEn: 'Custom topic',
+        shortTr: 'Özel',
+        shortEn: 'Custom',
+        icon: Icons.flag_outlined,
+        badgeColor: Color(0xFF8FA89A),
+      );
+
+  bool get isQuitHabit => isCustom ? true : def.kind == HabitKind.quit;
+
+  bool get hasDetailedSetup => definition?.hasDetailedSetup ?? false;
+
+  IconData get icon => def.icon;
+
+  Color get badgeColor => def.badgeColor;
+
+  HabitCategory? get category => definition?.category;
 
   String get contentAssetPath => 'assets/content/$id/milestones.json';
 
-  static HabitType? fromId(String id) {
-    if (id.startsWith('custom')) return HabitType.custom;
-    for (final t in HabitType.values) {
-      if (t.id == id) return t;
-    }
+  static HabitType? fromId(String? raw) {
+    if (raw == null || raw.isEmpty) return null;
+    if (raw == 'custom' || raw.startsWith('custom')) return custom;
+    if (HabitCatalog.byId(raw) != null) return HabitType._(raw);
     return null;
   }
 
-  static List<HabitType> get presets => HabitType.values
-      .where((t) => t != HabitType.custom)
+  static HabitType of(String id) => fromId(id) ?? HabitType._(id);
+
+  static List<HabitType> get presets =>
+      HabitCatalog.all.map((d) => HabitType._(d.id)).toList(growable: false);
+
+  static List<HabitType> presetsIn(HabitCategory category) => HabitCatalog
+      .byCategory(category)
+      .map((d) => HabitType._(d.id))
       .toList(growable: false);
+
+  @override
+  bool operator ==(Object other) =>
+      other is HabitType && other.id == id;
+
+  @override
+  int get hashCode => id.hashCode;
+
+  @override
+  String toString() => 'HabitType($id)';
 }
+
+/// Compatibility alias used by older call sites.
+typedef HabitTypeX = HabitType;

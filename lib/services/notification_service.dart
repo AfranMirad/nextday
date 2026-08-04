@@ -51,26 +51,30 @@ class NotificationService {
     if (kIsWeb) return;
     await init();
     await _plugin.cancel(1001);
-    await _plugin.zonedSchedule(
-      1001,
-      'Gun Sayaci',
-      'Bugunku ilerlemeni ve motivasyonunu gormeyi unutma.',
-      _nextInstanceOfTime(hour, minute),
-      const NotificationDetails(
-        android: AndroidNotificationDetails(
-          'daily_reminder',
-          'Gunluk hatirlatma',
-          channelDescription: 'Her gun aliskanlik ilerlemesi hatirlatmasi',
-          importance: Importance.defaultImportance,
-          priority: Priority.defaultPriority,
+    try {
+      await _plugin.zonedSchedule(
+        1001,
+        'NextDay',
+        'Bugünkü ilerlemeni ve motivasyonunu görmeyi unutma.',
+        _nextInstanceOfTime(hour, minute),
+        const NotificationDetails(
+          android: AndroidNotificationDetails(
+            'daily_reminder',
+            'Günlük hatırlatma',
+            channelDescription: 'Her gün alışkanlık ilerlemesi hatırlatması',
+            importance: Importance.defaultImportance,
+            priority: Priority.defaultPriority,
+          ),
+          iOS: DarwinNotificationDetails(),
         ),
-        iOS: DarwinNotificationDetails(),
-      ),
-      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time,
-    );
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        matchDateTimeComponents: DateTimeComponents.time,
+      );
+    } catch (_) {
+      // Exact alarm / timezone failures should not block the toggle UI.
+    }
   }
 
   Future<void> cancelDailyReminder() async {
